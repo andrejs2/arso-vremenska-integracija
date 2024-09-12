@@ -56,6 +56,10 @@ CLOUD_CONDITION_MAP = {
     "overcast_lighttsra_night": "lightning-rainy",
     "overcast_day": "cloudy",
     "overcast_night": "cloudy",
+    "overcast_lightfg_night": "cloudy",
+    "overcast_lightfg_day": "cloudy",
+    "overcast_lightra_night": "rainy",
+    "overcast_lightra_day": "rainy",
 
     # Partly cloudy and rainy conditions ('clouds_icon_wwsyn_icon')
     "partcloudy_night": "partlycloudy",  # Corrected to lowercase
@@ -63,13 +67,15 @@ CLOUD_CONDITION_MAP = {
     "partcloudy_lightra_day": "pouring",  # Corrected to lowercase
     "partcloudy_lightra_night": "pouring",  # Corrected to lowercase
     "partcloudy_heavytsra_day": "lightning-rainy",  # Corrected to lowercase
-    "partcloudy_heavytsra_night": "lightning-rainy",  # Corrected to lowercase
+    "partcloudy_heavytsra_night": "lightning-rainy",
 
     # Storm conditions ('clouds_icon_wwsyn_icon')
     "prevcloudy_modts_day": "lightning",  # Corrected to lowercase
     "prevcloudy_modts_night": "lightning",  # Corrected to lowercase
     "prevcloudy_heavyts_day": "lightning",  # Corrected to lowercase
     "prevcloudy_heavyts_night": "lightning",  # Corrected to lowercase
+    "prevcloudy_lightra_night": "rainy",
+    "prevcloudy_lightra_day": "rainy",
 
     # Clear conditions
     "clear_night": "clear-night",
@@ -95,14 +101,14 @@ CLOUD_CONDITION_MAP = {
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry, async_add_entities: AddEntitiesCallback):
     """Set up ARSO Weather platform from a config entry."""
     location = config_entry.data.get('location', 'Ljubljana')  # Get location from user input
-    async_add_entities([ArsoWeather(location)], True)
+    async_add_entities([ArsoWeather(location, config_entry.entry_id)], True)
 
 class ArsoWeather(WeatherEntity):
     """Representation of ARSO Weather entity."""
 
     _attr_supported_features = WeatherEntityFeature.FORECAST_HOURLY | WeatherEntityFeature.FORECAST_DAILY
 
-    def __init__(self, location):
+    def __init__(self, location, entry_id):
         self._location = location
         self._attr_native_temperature = None
         self._attr_native_pressure = None
@@ -113,11 +119,17 @@ class ArsoWeather(WeatherEntity):
         self._attr_condition = None
         self._daily_forecast = None
         self._hourly_forecast = None
+        self._entry_id = entry_id  # Store entry_id for unique_id
+
+    @property
+    def unique_id(self):
+        """Return a unique ID for this entity."""
+        return f"{self._entry_id}_{self._location.lower()}"
 
     @property
     def name(self):
         """Return the name of the entity."""
-        return f"ARSO Vreme - {self._location}"
+        return f"ARSO VREME - {self._location}"
 
     @property
     def native_temperature(self):
@@ -217,6 +229,7 @@ class ArsoWeather(WeatherEntity):
 
             # Fetch forecast data
             await self._fetch_forecasts()
+
 
 
     async def _fetch_forecasts(self):
