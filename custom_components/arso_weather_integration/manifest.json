@@ -4,7 +4,7 @@
   "version": "1.1.0",
   "documentation": "https://github.com/tvojeuporabniskoime/arso_weather_integration",
   "dependencies": [],
-  "codeowners": ["@tvojeuporabniskoime"],
+  "codeowners": ["@andrejs2"],
   "requirements": ["aiohttp==3.7.4.post0"],
   "iot_class": "cloud_polling",
   "config_flow": true
