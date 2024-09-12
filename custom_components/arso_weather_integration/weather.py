@@ -330,3 +330,4 @@ class ArsoWeather(WeatherEntity):
     def _map_condition(self, clouds_short_text):
         """Map ARSO cloud conditions to Home Assistant weather conditions."""
         return CLOUD_CONDITION_MAP.get(clouds_short_text.lower(), "unknown")
+
