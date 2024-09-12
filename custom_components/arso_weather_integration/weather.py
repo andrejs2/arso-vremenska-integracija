@@ -25,21 +25,71 @@ WIND_DIRECTION_MAP = {
 
 # Translation map for Slovenian cloud conditions to Home Assistant-compatible terms
 CLOUD_CONDITION_MAP = {
+    # Common weather conditions from 'wwsyn_shortText' and 'clouds_shortText'
     "jasno": "sunny",
     "delno oblačno": "partlycloudy",
     "pretežno oblačno": "cloudy",
     "oblačno": "cloudy",
     "megla": "fog",
-    "dež": "rainy",
-    "sneg": "snowy",
-    "plohe": "pouring",
-    "sneženje": "snowy",
+    "dežuje": "rainy",
     "možnost neviht": "lightning-rainy",
-    "nevihte": "lightning",
+    "dež": "rainy",
+    "plohe": "pouring",
+    "sneži": "snowy",
     "toča": "hail",
+    "sneg z dežjem": "snowy-rainy",
     "vetrovno": "windy",
     "veter z oblaki": "windy-variant",
-    "sneg z dežjem": "snowy-rainy",
+
+    # Overcast conditions with thunderstorms and rain ('clouds_icon_wwsyn_icon')
+    "overcast_heavytsra_day": "lightning-rainy",
+    "overcast_heavytsra_night": "lightning-rainy",
+    "overcast_heavyra_day": "rainy",  # Corrected to lowercase
+    "overcast_heavyra_night": "rainy",
+    "overcast_modtsra_day": "lightning-rainy",
+    "overcast_modtsra_night": "lightning-rainy",
+    "overcast_modra_day": "rainy",  # Corrected to lowercase
+    "overcast_modra_night": "rainy",
+    "overcast_lightra_day": "rainy",
+    "overcast_lightra_night": "rainy",
+    "overcast_lighttsra_day": "lightning-rainy",
+    "overcast_lighttsra_night": "lightning-rainy",
+    "overcast_day": "cloudy",
+    "overcast_night": "cloudy",
+
+    # Partly cloudy and rainy conditions ('clouds_icon_wwsyn_icon')
+    "partcloudy_night": "partlycloudy",  # Corrected to lowercase
+    "partcloudy_day": "partlycloudy",  # Corrected to lowercase
+    "partcloudy_lightra_day": "pouring",  # Corrected to lowercase
+    "partcloudy_lightra_night": "pouring",  # Corrected to lowercase
+    "partcloudy_heavytsra_day": "lightning-rainy",  # Corrected to lowercase
+    "partcloudy_heavytsra_night": "lightning-rainy",  # Corrected to lowercase
+
+    # Storm conditions ('clouds_icon_wwsyn_icon')
+    "prevcloudy_modts_day": "lightning",  # Corrected to lowercase
+    "prevcloudy_modts_night": "lightning",  # Corrected to lowercase
+    "prevcloudy_heavyts_day": "lightning",  # Corrected to lowercase
+    "prevcloudy_heavyts_night": "lightning",  # Corrected to lowercase
+
+    # Clear conditions
+    "clear_night": "clear-night",
+    "clear_day": "sunny",
+
+    # Additional conditions ('clouds_icon_wwsyn_icon', 'wwsyn_shortText', etc.)
+    "mostly_clear_night": "clear-night",
+    "mostly_clear_day": "sunny",
+    "foggy": "fog",
+    "drizzle": "rainy",
+    "light_snow": "snowy",
+    "heavy_snow": "snowy",
+    "partly_cloudy_rain": "rainy",
+    "partly_cloudy_day": "partlycloudy",
+    "partly_cloudy_night": "partlycloudy",
+    "thunderstorm": "lightning-rainy",
+    "hailstorm": "hail",
+    "blizzard": "snowy",
+    "prevcloudy_day": "cloudy",
+    "prevcloudy_night": "cloudy",
 }
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry, async_add_entities: AddEntitiesCallback):
@@ -67,7 +117,7 @@ class ArsoWeather(WeatherEntity):
     @property
     def name(self):
         """Return the name of the entity."""
-        return f"ARSO Weather - {self._location}"
+        return f"ARSO Vreme - {self._location}"
 
     @property
     def native_temperature(self):
@@ -123,7 +173,7 @@ class ArsoWeather(WeatherEntity):
         """Return additional attributes."""
         return {
             "location": self._location,
-            "attribution": "Powered by ARSO",
+            "attribution": "Vir: Agencija RS za okolje",
         }
 
     async def async_update(self):
@@ -143,13 +193,31 @@ class ArsoWeather(WeatherEntity):
                         self._attr_native_pressure = float(observation.get("msl", 0))
                         self._attr_native_wind_speed = float(observation.get("ff_val", 0))
                         self._attr_wind_bearing = WIND_DIRECTION_MAP.get(observation.get("dd_shortText", ""), "")
-                        self._attr_condition = CLOUD_CONDITION_MAP.get(observation.get("clouds_shortText", "").lower(), "unknown")
+
+                        # Log weather conditions for debugging
+                        clouds_icon = observation.get("clouds_icon_wwsyn_icon", "").lower()
+                        wwsyn_short = observation.get("wwsyn_shortText", "").lower()
+                        clouds_short = observation.get("clouds_shortText", "").lower()
+
+                        _LOGGER.debug("clouds_icon_wwsyn_icon: %s", clouds_icon)
+                        _LOGGER.debug("wwsyn_shortText: %s", wwsyn_short)
+                        _LOGGER.debug("clouds_shortText: %s", clouds_short)
+
+                        # Use 'clouds_icon_wwsyn_icon' for detailed weather conditions
+                        condition = clouds_icon or wwsyn_short or clouds_short
+                        _LOGGER.debug("Selected weather condition before mapping: %s", condition)
+
+                        # Map the condition to the appropriate weather state
+                        self._attr_condition = CLOUD_CONDITION_MAP.get(condition, "unknown")
+                        _LOGGER.debug("Mapped weather condition: %s", self._attr_condition)
+
                         self._attr_native_precipitation = 0  # No direct precipitation data in observation
                     except (ValueError, KeyError) as e:
                         _LOGGER.error("Error processing weather observation data: %s", e)
 
-        # Fetch forecast data
-        await self._fetch_forecasts()
+            # Fetch forecast data
+            await self._fetch_forecasts()
+
 
     async def _fetch_forecasts(self):
         """Fetch both daily and hourly forecast data."""
@@ -175,11 +243,16 @@ class ArsoWeather(WeatherEntity):
             for entry in day["timeline"]:
                 forecast_time = datetime.strptime(entry["valid"], "%Y-%m-%dT%H:%M:%S%z")
 
-                # Get the cloud condition for the hour
-                cloud_condition = entry.get("clouds_shortText", "unknown")
-                
-                # Translate the cloud condition from Slovenian to English
-                cloud_condition_translated = CLOUD_CONDITION_MAP.get(cloud_condition.lower(), "unknown")
+                # Get the weather conditions for the hour
+                clouds_icon = entry.get("clouds_icon_wwsyn_icon", "").lower()
+                wwsyn_short = entry.get("wwsyn_shortText", "").lower()
+                clouds_short = entry.get("clouds_shortText", "").lower()
+
+                # Use cascading logic to select the condition
+                condition = clouds_icon or wwsyn_short or clouds_short
+
+                # Translate the condition
+                condition_translated = CLOUD_CONDITION_MAP.get(condition, "unknown")
 
                 # Build the hourly forecast entry
                 hourly_forecasts.append({
@@ -188,18 +261,16 @@ class ArsoWeather(WeatherEntity):
                     "precipitation": float(entry.get("tp_acc", 0)),
                     "wind_speed": float(entry.get("ff_val", 0)),
                     "wind_bearing": WIND_DIRECTION_MAP.get(entry.get("dd_shortText", ""), ""),
-                    "condition": cloud_condition_translated,  # Translated condition
+                    "condition": condition_translated,
                 })
 
-        # Log the processed hourly forecasts for debugging
-        _LOGGER.debug("Processed Hourly Forecasts for All Days: %s", hourly_forecasts)
-
+        _LOGGER.debug("Processed Hourly Forecasts: %s", hourly_forecasts)
         return hourly_forecasts
 
     def _process_daily_forecast(self, forecast_data):
         """Process the daily forecast data."""
         daily_forecasts = []
-        
+
         # Loop over all available forecast days in the data
         for day in forecast_data["forecast3h"]["features"][0]["properties"]["days"]:
             # Extract the date for the forecast
@@ -210,12 +281,16 @@ class ArsoWeather(WeatherEntity):
             min_temp = min(temperatures) if temperatures else None
             max_temp = max(temperatures) if temperatures else None
 
-            # Get the cloud condition for the day
-            cloud_conditions = [entry.get("clouds_shortText", "unknown") for entry in day["timeline"]]
-            cloud_condition = cloud_conditions[0] if cloud_conditions else "unknown"
+            # Get the weather conditions for the day
+            clouds_icon = day["timeline"][0].get("clouds_icon_wwsyn_icon", "").lower()
+            wwsyn_short = day["timeline"][0].get("wwsyn_shortText", "").lower()
+            clouds_short = day["timeline"][0].get("clouds_shortText", "").lower()
 
-            # Translate the cloud condition from Slovenian to English
-            cloud_condition_translated = CLOUD_CONDITION_MAP.get(cloud_condition.lower(), "unknown")
+            # Use cascading logic to select the condition
+            condition = clouds_icon or wwsyn_short or clouds_short
+
+            # Translate the condition
+            condition_translated = CLOUD_CONDITION_MAP.get(condition, "unknown")
 
             # Build the daily forecast entry
             daily_forecasts.append({
@@ -225,13 +300,10 @@ class ArsoWeather(WeatherEntity):
                 "precipitation": float(day["timeline"][0].get("tp_acc", 0)),
                 "wind_speed": float(day["timeline"][0].get("ff_val", 0)),
                 "wind_bearing": WIND_DIRECTION_MAP.get(day["timeline"][0].get("dd_shortText", ""), ""),
-                "condition": cloud_condition_translated,
+                "condition": condition_translated,
             })
 
-        # Log the processed daily forecasts for debugging
         _LOGGER.debug("Processed Daily Forecasts: %s", daily_forecasts)
-
-        # Return all available daily forecasts, up to 11 days
         return daily_forecasts[:11]  # Return 11 days
 
     async def async_forecast_hourly(self):
