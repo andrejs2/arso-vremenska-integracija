@@ -1,6 +1,6 @@
 {
   "domain": "arso_weather_integration",
-  "name": "ARSO Vremenska Integracija",
+  "name": "ARSO VREME",
   "version": "1.1.0",
   "documentation": "https://github.com/andrejs2/arso-vremenska-integracija",
   "issue_tracker": "https://github.com/andrejs2/arso-vremenska-integracija/issues",
