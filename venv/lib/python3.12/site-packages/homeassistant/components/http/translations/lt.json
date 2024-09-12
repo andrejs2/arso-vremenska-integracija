@@ -1,0 +1,16 @@
+{
+    "exceptions": {
+        "no_external_url_available": {
+            "message": "N\u0117ra i\u0161orinio URL"
+        },
+        "strict_connection_not_enabled_non_cloud": {
+            "message": "Grie\u017etas ry\u0161ys ne\u012fjungtas ne debesies u\u017eklausoms"
+        }
+    },
+    "services": {
+        "create_temporary_strict_connection_url": {
+            "description": "Sukurkite laikin\u0105 grie\u017eto ry\u0161io URL, kur\u012f b\u016bt\u0173 galima naudoti prisijungiant kitame \u012frenginyje.",
+            "name": "Sukurkite laikin\u0105 grie\u017eto ry\u0161io URL"
+        }
+    }
+}

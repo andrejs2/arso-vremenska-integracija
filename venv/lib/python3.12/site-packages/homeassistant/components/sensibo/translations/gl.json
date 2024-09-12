@@ -1,0 +1,12 @@
+{
+    "entity": {
+        "select": {
+            "horizontalswing": {
+                "state": {
+                    "rangeleft": "Rango \u00e1 esquerda",
+                    "rangeright": "Rango \u00e1 dereita"
+                }
+            }
+        }
+    }
+}

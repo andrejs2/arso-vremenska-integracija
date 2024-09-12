@@ -1,0 +1,35 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "El dispositiu ja est\u00e0 configurat"
+        },
+        "error": {
+            "cannot_connect": "Ha fallat la connexi\u00f3",
+            "invalid_auth": "Autenticaci\u00f3 inv\u00e0lida"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "email": "Correu electr\u00f2nic",
+                    "password": "Contrasenya"
+                }
+            }
+        }
+    },
+    "entity": {
+        "sensor": {
+            "energy_production_month": {
+                "name": "Producci\u00f3 d'energia aquest mes"
+            },
+            "energy_production_today": {
+                "name": "Producci\u00f3 d'energia avui"
+            },
+            "energy_production_total": {
+                "name": "Producci\u00f3 d'energia total"
+            },
+            "power_production": {
+                "name": "Pot\u00e8ncia produ\u00efda"
+            }
+        }
+    }
+}

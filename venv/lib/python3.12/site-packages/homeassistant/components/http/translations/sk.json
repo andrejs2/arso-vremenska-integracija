@@ -1,0 +1,16 @@
+{
+    "exceptions": {
+        "no_external_url_available": {
+            "message": "Nie je k dispoz\u00edcii \u017eiadna extern\u00e1 adresa URL"
+        },
+        "strict_connection_not_enabled_non_cloud": {
+            "message": "Pr\u00edsne pripojenie nie je povolen\u00e9 pre po\u017eiadavky, ktor\u00e9 nie s\u00fa v cloude"
+        }
+    },
+    "services": {
+        "create_temporary_strict_connection_url": {
+            "description": "Vytvorte do\u010dasn\u00fa pr\u00edsnu adresu URL pripojenia, ktor\u00fa m\u00f4\u017eete pou\u017ei\u0165 na prihl\u00e1senie v inom zariaden\u00ed.",
+            "name": "Vytvorenie do\u010dasnej striktnej adresy URL pripojenia"
+        }
+    }
+}

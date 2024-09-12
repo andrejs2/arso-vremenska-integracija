@@ -1,0 +1,84 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Seade on juba h\u00e4\u00e4lestatud",
+            "cannot_connect": "\u00dchendamine nurjus",
+            "reauth_failed": "Tuvastamine nurjus",
+            "reauth_successful": "Taastuvastamine \u00f5nnestus"
+        },
+        "error": {
+            "cannot_connect": "\u00dchendamine nurjus",
+            "invalid_auth": "Tuvastamine nurjus",
+            "unknown": "Ootamatu t\u00f5rge"
+        },
+        "step": {
+            "auth": {
+                "data": {
+                    "password": "Salas\u00f5na",
+                    "username": "Kasutajanimi"
+                },
+                "description": "Sisesta kasutajanimi ja salas\u00f5na"
+            },
+            "confirm_discovery": {
+                "description": "Kas seadistada SMLIGHT-i aadressil {host}?"
+            },
+            "reauth_confirm": {
+                "data": {
+                    "password": "Salas\u00f5na",
+                    "username": "Kasutajanimi"
+                },
+                "title": "{name} autentimine aegus"
+            },
+            "user": {
+                "data": {
+                    "host": "Host"
+                },
+                "data_description": {
+                    "host": "SMLIGHT SLZB-06x seadme hostinimi v\u00f5i IP-aadress"
+                },
+                "description": "SMLIGHT Zigbee sidumise seadistamine"
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "ethernet": {
+                "name": "Ethernet"
+            },
+            "wifi": {
+                "name": "WiFi"
+            }
+        },
+        "button": {
+            "core_restart": {
+                "name": "Tuuma taask\u00e4ivitamine"
+            },
+            "zigbee_flash_mode": {
+                "name": "Zigbee uuendamise re\u017eiim"
+            },
+            "zigbee_restart": {
+                "name": "Zigbee taask\u00e4ivitamine"
+            }
+        },
+        "sensor": {
+            "core_temperature": {
+                "name": "Tuumikkiibi temperatuur"
+            },
+            "core_uptime": {
+                "name": "Tuuma t\u00f6\u00f6aeg"
+            },
+            "fs_usage": {
+                "name": "Failis\u00fcsteemi kasutus"
+            },
+            "ram_usage": {
+                "name": "Muutm\u00e4lu kasutus"
+            },
+            "socket_uptime": {
+                "name": "Zigbee t\u00f6\u00f6aeg"
+            },
+            "zigbee_temperature": {
+                "name": "Zigbee kiibi temperatuur"
+            }
+        }
+    }
+}

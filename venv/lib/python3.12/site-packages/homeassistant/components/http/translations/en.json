@@ -1,0 +1,16 @@
+{
+    "exceptions": {
+        "no_external_url_available": {
+            "message": "No external URL available"
+        },
+        "strict_connection_not_enabled_non_cloud": {
+            "message": "Strict connection is not enabled for non-cloud requests"
+        }
+    },
+    "services": {
+        "create_temporary_strict_connection_url": {
+            "description": "Create a temporary strict connection URL, which can be used to login on another device.",
+            "name": "Create a temporary strict connection URL"
+        }
+    }
+}

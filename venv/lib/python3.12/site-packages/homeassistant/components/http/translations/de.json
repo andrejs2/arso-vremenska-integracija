@@ -1,0 +1,16 @@
+{
+    "exceptions": {
+        "no_external_url_available": {
+            "message": "Keine externe URL verf\u00fcgbar"
+        },
+        "strict_connection_not_enabled_non_cloud": {
+            "message": "F\u00fcr Nicht-Cloud-Anfragen ist die strikte Verbindung nicht aktiviert."
+        }
+    },
+    "services": {
+        "create_temporary_strict_connection_url": {
+            "description": "Erstelle eine tempor\u00e4re, strikte Verbindungs-URL, die f\u00fcr die Anmeldung auf einem anderen Ger\u00e4t verwendet werden kann.",
+            "name": "Erstelle eine tempor\u00e4re, strikte Verbindungs-URL"
+        }
+    }
+}

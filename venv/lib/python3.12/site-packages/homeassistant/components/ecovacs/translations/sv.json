@@ -1,0 +1,37 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Konto har redan konfigurerats"
+        },
+        "error": {
+            "cannot_connect": "Det gick inte att ansluta.",
+            "invalid_auth": "Ogiltig autentisering",
+            "unknown": "Ov\u00e4ntat fel"
+        },
+        "step": {
+            "auth": {
+                "data": {
+                    "password": "L\u00f6senord",
+                    "username": "Anv\u00e4ndarnamn"
+                }
+            },
+            "user": {
+                "data": {
+                    "mode": "L\u00e4ge",
+                    "password": "L\u00f6senord",
+                    "username": "Anv\u00e4ndarnamn"
+                },
+                "data_description": {
+                    "mode": "V\u00e4lj det l\u00e4ge som du vill anv\u00e4nda f\u00f6r att ansluta till Ecovacs. Om du \u00e4r os\u00e4ker v\u00e4ljer du \"Cloud\".\n\nV\u00e4lj \"Sj\u00e4lvhanterad\" endast om du har en fungerande sj\u00e4lvhanterad instans."
+                }
+            }
+        }
+    },
+    "entity": {
+        "number": {
+            "cut_direction": {
+                "name": "Klippriktning"
+            }
+        }
+    }
+}

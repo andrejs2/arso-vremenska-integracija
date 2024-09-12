@@ -1,0 +1,20 @@
+{
+    "config": {
+        "step": {
+            "pairing": {
+                "title": "Emparejamiento con una TV webOS"
+            },
+            "user": {
+                "description": "Encienda la TV, rellene los siguientes campos y haga clic en enviar",
+                "title": "Conectar con una TV webOS"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Opciones para webOS Smart TV"
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "selector": {
+        "cycle": {
+            "options": {
+                "daily": "Diario",
+                "hourly": "Cada hora",
+                "monthly": "Mensual",
+                "none": "Sen ciclo",
+                "quarter-hourly": "Cada 15 minutos",
+                "quarterly": "Trimestral",
+                "weekly": "Semanal",
+                "yearly": "Anual"
+            }
+        }
+    }
+}

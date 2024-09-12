@@ -1,0 +1,50 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Ger\u00e4t ist bereits konfiguriert",
+            "reauth_successful": "Die erneute Authentifizierung war erfolgreich"
+        },
+        "error": {
+            "invalid_auth": "Ung\u00fcltige Authentifizierung",
+            "unknown": "Unerwarteter Fehler"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "email": "E-Mail",
+                    "password": "Passwort"
+                }
+            }
+        }
+    },
+    "entity": {
+        "event": {
+            "barrier_obstructed": {
+                "name": "Schranke blockiert",
+                "state_attributes": {
+                    "event_type": {
+                        "state": {
+                            "barrier_obstructed": "Schranke blockiert"
+                        }
+                    }
+                }
+            }
+        },
+        "light": {
+            "light": {
+                "name": "Licht"
+            }
+        },
+        "switch": {
+            "vacation_mode": {
+                "name": "Urlaubsmodus"
+            }
+        }
+    },
+    "issues": {
+        "firmware_update_required": {
+            "description": "Dein Ger\u00e4t ({device_name}) ben\u00f6tigt ein Firmware-Update \u00fcber die Nice G.O.-App, um mit dieser Integration zu funktionieren. Bitte aktualisiere die Firmware \u00fcber die Nice G.O.-App und konfiguriere diese Integration neu.",
+            "title": "Firmware-Update erforderlich"
+        }
+    }
+}

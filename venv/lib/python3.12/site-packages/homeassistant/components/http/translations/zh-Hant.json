@@ -1,0 +1,16 @@
+{
+    "exceptions": {
+        "no_external_url_available": {
+            "message": "\u6c92\u6709\u53ef\u7528\u7684\u5916\u90e8 URL"
+        },
+        "strict_connection_not_enabled_non_cloud": {
+            "message": "\u975e\u96f2\u7aef\u8acb\u6c42\u672a\u958b\u555f\u56b4\u683c\u52a0\u5bc6\u9023\u7dda"
+        }
+    },
+    "services": {
+        "create_temporary_strict_connection_url": {
+            "description": "\u65b0\u589e\u81e8\u6642\u56b4\u683c\u52a0\u5bc6\u9023\u7dda URL\u3001\u53ef\u7528\u65bc\u5176\u4ed6\u88dd\u7f6e\u767b\u5165\u3002",
+            "name": "\u65b0\u589e\u81e8\u6642\u56b4\u683c\u52a0\u5bc6\u9023\u7dda URL"
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "config": {
+        "step": {
+            "presets": {
+                "title": "Presets de temperatura"
+            },
+            "user": {
+                "data": {
+                    "ac_mode": "Modo de refrixeraci\u00f3n",
+                    "cold_tolerance": "Tolerancia ao fr\u00edo",
+                    "target_sensor": "Sensor de temperatura"
+                },
+                "data_description": {
+                    "ac_mode": "Establece o actuador especificado para ser tratado como un dispositivo de refrixeraci\u00f3n en lugar de un dispositivo de calefacci\u00f3n."
+                },
+                "title": "Engadir axudante de term\u00f3stato xen\u00e9rico"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "ac_mode": "Modo de refrixeraci\u00f3n",
+                    "cold_tolerance": "Tolerancia ao fr\u00edo",
+                    "target_sensor": "Sensor de temperatura"
+                },
+                "data_description": {
+                    "ac_mode": "Establece o actuador especificado para ser tratado como un dispositivo de refrixeraci\u00f3n en lugar de un dispositivo de calefacci\u00f3n."
+                }
+            },
+            "presets": {
+                "data": {
+                    "home_temp": "Na casa"
+                },
+                "title": "Presets de temperatura"
+            }
+        }
+    },
+    "title": "Termostato xen\u00e9rico"
+}

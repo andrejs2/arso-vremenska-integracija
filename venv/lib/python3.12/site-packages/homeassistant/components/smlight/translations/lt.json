@@ -1,0 +1,84 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "\u012erenginys jau sukonfig\u016bruotas",
+            "cannot_connect": "Nepavyko prisijungti",
+            "reauth_failed": "Neteisingas autentifikavimas",
+            "reauth_successful": "Pakartotinis autentifikavimas buvo s\u0117kmingas"
+        },
+        "error": {
+            "cannot_connect": "Nepavyko prisijungti",
+            "invalid_auth": "Neteisingas autentifikavimas",
+            "unknown": "Netik\u0117ta klaida"
+        },
+        "step": {
+            "auth": {
+                "data": {
+                    "password": "Slapta\u017eodis",
+                    "username": "Prisijungimos vardas"
+                },
+                "description": "\u012eveskite vartotojo vard\u0105 ir slapta\u017eod\u012f"
+            },
+            "confirm_discovery": {
+                "description": "Ar norite nustatyti SMLIGHT adresu {host}?"
+            },
+            "reauth_confirm": {
+                "data": {
+                    "password": "Slapta\u017eodis",
+                    "username": "Prisijungimos vardas"
+                },
+                "title": "Baig\u0117si {name} autentifikavimo galiojimas"
+            },
+            "user": {
+                "data": {
+                    "host": "Host"
+                },
+                "data_description": {
+                    "host": "SMLIGHT SLZB-06x \u012frenginio pagrindinio kompiuterio pavadinimas arba IP adresas"
+                },
+                "description": "Nustatykite SMLIGHT Zigbee integracij\u0105"
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "ethernet": {
+                "name": "Eternetas"
+            },
+            "wifi": {
+                "name": "Wi-Fi"
+            }
+        },
+        "button": {
+            "core_restart": {
+                "name": "Pagrindinis paleidimas i\u0161 naujo"
+            },
+            "zigbee_flash_mode": {
+                "name": "Zigbee blykst\u0117s re\u017eimas"
+            },
+            "zigbee_restart": {
+                "name": "Zigbee paleisti i\u0161 naujo"
+            }
+        },
+        "sensor": {
+            "core_temperature": {
+                "name": "Pagrindin\u0117 lusto temperat\u016bra"
+            },
+            "core_uptime": {
+                "name": "Pagrindinis veikimo laikas"
+            },
+            "fs_usage": {
+                "name": "Fail\u0173 sistemos naudojimas"
+            },
+            "ram_usage": {
+                "name": "RAM naudojimas"
+            },
+            "socket_uptime": {
+                "name": "Zigbee veikimo laikas"
+            },
+            "zigbee_temperature": {
+                "name": "Zigbee lusto temperat\u016bra"
+            }
+        }
+    }
+}

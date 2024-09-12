@@ -1,0 +1,13 @@
+{
+    "config": {
+        "step": {
+            "auth": {
+                "description": "Para vincular su cuenta de TelldusLive: \n 1. Haga clic en el siguiente enlace \n 2. Inicia sesi\u00f3n en Telldus Live \n 3. Autorice ** {app_name} ** (haga clic en ** S\u00ed **). \n 4. Vuelve aqu\u00ed y haz clic en ** ENVIAR **. \n\n [Enlace a la cuenta de TelldusLive] ( {auth_url} )",
+                "title": "Autenticar con TelldusLive"
+            },
+            "user": {
+                "title": "Elegir punto final."
+            }
+        }
+    }
+}

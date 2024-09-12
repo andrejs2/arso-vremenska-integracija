@@ -1,0 +1,31 @@
+{
+    "config": {
+        "error": {
+            "invalid_api_key": "Ung\u00fcltiger API-Schl\u00fcssel"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "API-Schl\u00fcssel"
+                },
+                "data_description": {
+                    "api_key": "Dein Elevenlabs API-Schl\u00fcssel."
+                }
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "model": "Modell",
+                    "voice": "Stimme"
+                },
+                "data_description": {
+                    "model": "Zu verwendendes ElevenLabs-Modell. Bitte beachte, dass nicht alle Modelle alle Sprachen gleich gut unterst\u00fctzen.",
+                    "voice": "F\u00fcr TTS zu verwendende Stimme."
+                }
+            }
+        }
+    }
+}

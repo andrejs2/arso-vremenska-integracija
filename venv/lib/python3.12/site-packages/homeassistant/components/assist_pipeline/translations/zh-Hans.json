@@ -1,0 +1,25 @@
+{
+    "entity": {
+        "binary_sensor": {
+            "assist_in_progress": {
+                "name": "\u8bed\u97f3\u52a9\u624b\u8fdb\u884c\u4e2d"
+            }
+        },
+        "select": {
+            "pipeline": {
+                "name": "\u8bed\u97f3\u52a9\u624b\u7ba1\u9053",
+                "state": {
+                    "preferred": "\u9996\u9009"
+                }
+            },
+            "vad_sensitivity": {
+                "name": "\u8bb2\u8bdd\u5b8c\u6bd5\u68c0\u6d4b",
+                "state": {
+                    "aggressive": "\u79ef\u6781",
+                    "default": "\u9ed8\u8ba4",
+                    "relaxed": "\u8f7b\u677e"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "config": {
+        "error": {
+            "invalid_api_key": "Vale API v\u00f5ti"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "API v\u00f5ti"
+                },
+                "data_description": {
+                    "api_key": "Elevenlabsi API v\u00f5ti."
+                }
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "model": "Mudel",
+                    "voice": "H\u00e4\u00e4l"
+                },
+                "data_description": {
+                    "model": "Kasutatav ElevenLabsi mudel. Pane t\u00e4hele, et mitte k\u00f5ik mudelid ei toeta k\u00f5iki keeli v\u00f5rdselt.",
+                    "voice": "TTS-i jaoks kasutatav h\u00e4\u00e4l."
+                }
+            }
+        }
+    }
+}

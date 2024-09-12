@@ -1,0 +1,100 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Urz\u0105dzenie jest ju\u017c skonfigurowane",
+            "no_devices_found": "Nie znaleziono urz\u0105dze\u0144 w sieci",
+            "reauth_successful": "Ponowne uwierzytelnienie powiod\u0142o si\u0119"
+        },
+        "error": {
+            "cannot_connect": "B\u0142\u0105d po\u0142\u0105czenia: {error}"
+        },
+        "flow_title": "{name} {model} ({host})",
+        "step": {
+            "discovery_auth_confirm": {
+                "data": {
+                    "password": "Has\u0142o",
+                    "username": "Nazwa u\u017cytkownika"
+                },
+                "description": "Urz\u0105dzenie wymaga uwierzytelnienia, wprowad\u017a poni\u017cej swoje dane uwierzytelniaj\u0105ce TP-Link."
+            },
+            "discovery_confirm": {
+                "description": "Czy chcesz skonfigurowa\u0107 {name} {model} ({host})?"
+            },
+            "pick_device": {
+                "data": {
+                    "device": "Urz\u0105dzenie"
+                }
+            },
+            "reauth": {
+                "description": "Urz\u0105dzenie wymaga uwierzytelnienia, wprowad\u017a poni\u017cej swoje dane uwierzytelniaj\u0105ce TP-Link.",
+                "title": "Autoryzacja wygas\u0142a dla {name}"
+            },
+            "reauth_confirm": {
+                "data": {
+                    "password": "Has\u0142o",
+                    "username": "Nazwa u\u017cytkownika"
+                },
+                "description": "Urz\u0105dzenie wymaga uwierzytelnienia, wprowad\u017a poni\u017cej swoje dane uwierzytelniaj\u0105ce TP-Link.",
+                "title": "Autoryzacja wygas\u0142a dla {name}"
+            },
+            "user": {
+                "data": {
+                    "host": "Host"
+                },
+                "description": "Je\u015bli nie podasz IP lub nazwy hosta, zostanie u\u017cyte wykrywanie do odnalezienia urz\u0105dze\u0144."
+            },
+            "user_auth_confirm": {
+                "data": {
+                    "password": "Has\u0142o",
+                    "username": "Nazwa u\u017cytkownika"
+                },
+                "description": "Urz\u0105dzenie wymaga uwierzytelnienia, wprowad\u017a poni\u017cej swoje dane uwierzytelniaj\u0105ce TP-Link."
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "is_open": {
+                "name": "Drzwi",
+                "state": {
+                    "off": "zamkni\u0119to",
+                    "on": "otwarto"
+                }
+            },
+            "update_available": {
+                "name": "Aktualizacja",
+                "state": {
+                    "off": "brak aktualizacji",
+                    "on": "dost\u0119pna aktualizacja"
+                }
+            },
+            "water_alert": {
+                "name": "Wilgo\u0107",
+                "state": {
+                    "off": "brak",
+                    "on": "wykryto"
+                }
+            }
+        },
+        "sensor": {
+            "current": {
+                "name": "Nat\u0119\u017cenie pr\u0105du"
+            },
+            "humidity": {
+                "name": "Wilgotno\u015b\u0107"
+            },
+            "rssi": {
+                "name": "Si\u0142a sygna\u0142u"
+            },
+            "temperature": {
+                "name": "Temperatura"
+            },
+            "voltage": {
+                "name": "Napi\u0119cie"
+            },
+            "voltage_child": {
+                "name": "Napi\u0119cie {device_name}"
+            }
+        }
+    }
+}

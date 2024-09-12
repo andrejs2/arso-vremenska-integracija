@@ -1,0 +1,31 @@
+{
+    "config": {
+        "error": {
+            "invalid_api_key": "API \u91d1\u9470\u7121\u6548"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "API \u91d1\u9470"
+                },
+                "data_description": {
+                    "api_key": "\u60a8\u7684 Elevenlabs API \u91d1\u9470\u3002"
+                }
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "model": "\u6a21\u578b",
+                    "voice": "\u8a9e\u97f3"
+                },
+                "data_description": {
+                    "model": "\u6b32\u4f7f\u7528\u7684 ElevenLabs \u6a21\u578b\u3002\u8acb\u6ce8\u610f\uff1a\u4e26\u975e\u6240\u6709\u6a21\u578b\u90fd\u652f\u63f4\u6240\u6709\u8a9e\u8a00\u3002",
+                    "voice": "\u7528\u65bc TTS \u7684\u8a9e\u97f3\u3002"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Perangkat sudah dikonfigurasi"
+        },
+        "error": {
+            "cannot_connect": "Gagal terhubung"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "Kunci API"
+                }
+            }
+        }
+    },
+    "issues": {
+        "deprecated_yaml_import_issue_cannot_connect": {
+            "title": "Proses impor konfigurasi YAML {integration_title} gagal"
+        }
+    }
+}

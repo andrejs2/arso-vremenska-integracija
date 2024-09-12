@@ -1,0 +1,16 @@
+{
+    "exceptions": {
+        "no_external_url_available": {
+            "message": "Aucune URL externe disponible"
+        },
+        "strict_connection_not_enabled_non_cloud": {
+            "message": "La connexion stricte n'est pas activ\u00e9e pour les requ\u00eates non cloud"
+        }
+    },
+    "services": {
+        "create_temporary_strict_connection_url": {
+            "description": "Cr\u00e9ez une URL de connexion stricte temporaire, qui peut \u00eatre utilis\u00e9e pour vous connecter sur un autre appareil.",
+            "name": "Cr\u00e9er une URL de connexion stricte temporaire"
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Deze luchthaven is al geconfigureerd."
+        },
+        "error": {
+            "cannot_connect": "Kan geen verbinding maken",
+            "invalid_airport": "Luchthavencode is ongeldig",
+            "unknown": "Onverwachte fout"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "id": "Luchthaven"
+                },
+                "description": "Voer een Amerikaanse luchthavencode in IATA-indeling in",
+                "title": "FAA-vertragingen"
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "arrive_delay": {
+                "name": "Aankomst vertraging"
+            },
+            "depart_delay": {
+                "name": "Vertrek vertraging"
+            },
+            "ground_delay": {
+                "state_attributes": {
+                    "average": {
+                        "name": "Gemiddeld"
+                    }
+                }
+            }
+        }
+    }
+}

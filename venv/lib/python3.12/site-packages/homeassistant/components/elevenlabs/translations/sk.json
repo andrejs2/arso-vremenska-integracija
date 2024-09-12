@@ -1,0 +1,31 @@
+{
+    "config": {
+        "error": {
+            "invalid_api_key": "Neplatn\u00fd API k\u013e\u00fa\u010d"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "API k\u013e\u00fa\u010d"
+                },
+                "data_description": {
+                    "api_key": "V\u00e1\u0161 k\u013e\u00fa\u010d API Elevenlabs."
+                }
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "model": "Model",
+                    "voice": "Hlas"
+                },
+                "data_description": {
+                    "model": "Model ElevenLabs na pou\u017eitie. Upozor\u0148ujeme, \u017ee nie v\u0161etky modely podporuj\u00fa v\u0161etky jazyky rovnako dobre.",
+                    "voice": "Hlas na pou\u017eitie pre TTS."
+                }
+            }
+        }
+    }
+}

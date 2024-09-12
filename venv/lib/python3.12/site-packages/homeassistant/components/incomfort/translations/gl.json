@@ -1,0 +1,22 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "data_description": {
+                    "host": "Nome do host ou enderezo IP da pasarela Intergas InComfort Lan2RF."
+                }
+            }
+        }
+    },
+    "entity": {
+        "water_heater": {
+            "boiler": {
+                "state": {
+                    "central_heating": "Calefacci\u00f3n central",
+                    "central_heating_rf": "Calefacci\u00f3n central rf",
+                    "postrun_ch": "Calefacci\u00f3n central posta en marcha"
+                }
+            }
+        }
+    }
+}

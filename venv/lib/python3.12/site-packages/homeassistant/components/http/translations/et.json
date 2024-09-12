@@ -1,0 +1,16 @@
+{
+    "exceptions": {
+        "no_external_url_available": {
+            "message": "V\u00e4line URL pole saadaval"
+        },
+        "strict_connection_not_enabled_non_cloud": {
+            "message": "Range \u00fchendus pole pilvev\u00e4liste taotluste jaoks lubatud"
+        }
+    },
+    "services": {
+        "create_temporary_strict_connection_url": {
+            "description": "Loo ajutine range \u00fchenduse URL mida saab kasutada teises seadmes sisselogimiseks.",
+            "name": "Ajutise range \u00fchenduse URL-i loomine"
+        }
+    }
+}

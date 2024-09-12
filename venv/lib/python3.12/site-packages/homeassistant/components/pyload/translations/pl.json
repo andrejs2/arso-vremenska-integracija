@@ -1,0 +1,28 @@
+{
+    "config": {
+        "abort": {
+            "reconfigure_successful": "Ponowna konfiguracja powiod\u0142a si\u0119"
+        },
+        "step": {
+            "reauth_confirm": {
+                "data": {
+                    "password": "Has\u0142o",
+                    "username": "Nazwa u\u017cytkownika"
+                },
+                "title": "Autoryzacja wygas\u0142a dla {name}"
+            },
+            "reconfigure_confirm": {
+                "data": {
+                    "host": "Host",
+                    "username": "Nazwa u\u017cytkownika",
+                    "verify_ssl": "Weryfikacja certyfikatu SSL"
+                }
+            },
+            "user": {
+                "data": {
+                    "verify_ssl": "Weryfikacja certyfikatu SSL"
+                }
+            }
+        }
+    }
+}

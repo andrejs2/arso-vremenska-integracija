@@ -1,0 +1,76 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "\u30c7\u30d0\u30a4\u30b9\u306f\u3059\u3067\u306b\u8a2d\u5b9a\u3055\u308c\u3066\u3044\u307e\u3059",
+            "cannot_connect": "\u63a5\u7d9a\u306b\u5931\u6557\u3057\u307e\u3057\u305f",
+            "reauth_failed": "\u7121\u52b9\u306a\u8a8d\u8a3c",
+            "reauth_successful": "\u518d\u8a8d\u8a3c\u306b\u6210\u529f\u3057\u307e\u3057\u305f"
+        },
+        "error": {
+            "cannot_connect": "\u63a5\u7d9a\u306b\u5931\u6557\u3057\u307e\u3057\u305f",
+            "invalid_auth": "\u7121\u52b9\u306a\u8a8d\u8a3c",
+            "unknown": "\u4e88\u671f\u3057\u306a\u3044\u30a8\u30e9\u30fc"
+        },
+        "step": {
+            "auth": {
+                "data": {
+                    "password": "\u30d1\u30b9\u30ef\u30fc\u30c9",
+                    "username": "\u30e6\u30fc\u30b6\u30fc\u540d"
+                },
+                "description": "\u30e6\u30fc\u30b6\u30fc\u540d\u3068\u30d1\u30b9\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044"
+            },
+            "confirm_discovery": {
+                "description": "{host} \u3067 SMLIGHT \u3092\u30bb\u30c3\u30c8\u30a2\u30c3\u30d7\u3057\u307e\u3059\u304b?"
+            },
+            "reauth_confirm": {
+                "data": {
+                    "password": "\u30d1\u30b9\u30ef\u30fc\u30c9",
+                    "username": "\u30e6\u30fc\u30b6\u30fc\u540d"
+                },
+                "title": "{name} \u306e\u8a8d\u8a3c\u306e\u6709\u52b9\u671f\u9650\u304c\u5207\u308c\u307e\u3057\u305f"
+            },
+            "user": {
+                "data": {
+                    "host": "\u30db\u30b9\u30c8"
+                },
+                "data_description": {
+                    "host": "SMLIGHT SLZB-06x\u30c7\u30d0\u30a4\u30b9\u306e\u30db\u30b9\u30c8\u540d\u307e\u305f\u306fIP\u30a2\u30c9\u30ec\u30b9"
+                },
+                "description": "SMLIGHT Zigbee\u7d71\u5408\u306e\u8a2d\u5b9a"
+            }
+        }
+    },
+    "entity": {
+        "button": {
+            "core_restart": {
+                "name": "\u30b3\u30a2\u306e\u518d\u8d77\u52d5"
+            },
+            "zigbee_flash_mode": {
+                "name": "Zigbee\u30d5\u30e9\u30c3\u30b7\u30e5\u30e2\u30fc\u30c9"
+            },
+            "zigbee_restart": {
+                "name": "Zigbee\u306e\u518d\u8d77\u52d5"
+            }
+        },
+        "sensor": {
+            "core_temperature": {
+                "name": "\u30b3\u30a2\u30c1\u30c3\u30d7\u6e29\u5ea6"
+            },
+            "core_uptime": {
+                "name": "\u30b3\u30a2\u306e\u7a3c\u50cd\u6642\u9593"
+            },
+            "fs_usage": {
+                "name": "\u30d5\u30a1\u30a4\u30eb\u30b7\u30b9\u30c6\u30e0\u306e\u4f7f\u7528"
+            },
+            "ram_usage": {
+                "name": "RAM\u4f7f\u7528\u91cf"
+            },
+            "socket_uptime": {
+                "name": "Zigbee \u306e\u7a3c\u50cd\u6642\u9593"
+            },
+            "zigbee_temperature": {
+                "name": "Zigbee\u30c1\u30c3\u30d7\u306e\u6e29\u5ea6"
+            }
+        }
+    }
+}

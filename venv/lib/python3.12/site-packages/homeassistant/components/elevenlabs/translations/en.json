@@ -1,0 +1,31 @@
+{
+    "config": {
+        "error": {
+            "invalid_api_key": "Invalid API key"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "API key"
+                },
+                "data_description": {
+                    "api_key": "Your Elevenlabs API key."
+                }
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "model": "Model",
+                    "voice": "Voice"
+                },
+                "data_description": {
+                    "model": "ElevenLabs model to use. Please note that not all models support all languages equally well.",
+                    "voice": "Voice to use for the TTS."
+                }
+            }
+        }
+    }
+}

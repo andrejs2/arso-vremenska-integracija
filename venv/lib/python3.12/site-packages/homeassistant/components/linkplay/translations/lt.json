@@ -1,0 +1,26 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "\u012erenginys jau sukonfig\u016bruotas",
+            "already_in_progress": "Konfig\u016bracijos procesas jau vyksta"
+        },
+        "error": {
+            "cannot_connect": "Nepavyko prisijungti",
+            "unknown": "Netik\u0117ta klaida"
+        },
+        "flow_title": "{name}",
+        "step": {
+            "discovery_confirm": {
+                "description": "Ar norite nustatyti {name} ?"
+            },
+            "user": {
+                "data": {
+                    "host": "Host"
+                },
+                "data_description": {
+                    "host": "LinkPlay \u012frenginio pagrindinio kompiuterio pavadinimas arba IP adresas."
+                }
+            }
+        }
+    }
+}

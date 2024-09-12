@@ -1,0 +1,10 @@
+{
+    "exceptions": {
+        "non_utf8_output": {
+            "message": "Nicht-UTF8-Ausgabe des Befehls kann nicht verarbeitet werden: \u201e{command}\u201c"
+        },
+        "timeout": {
+            "message": "Zeit\u00fcberschreitung beim Ausf\u00fchren des Befehls: \u201e{command}\u201c, nach: {timeout} Sekunden"
+        }
+    }
+}

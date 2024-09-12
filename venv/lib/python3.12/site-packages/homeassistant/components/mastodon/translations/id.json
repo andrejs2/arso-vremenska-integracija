@@ -1,0 +1,15 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Layanan sudah dikonfigurasi"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "access_token": "Token akses",
+                    "base_url": "URL"
+                }
+            }
+        }
+    }
+}

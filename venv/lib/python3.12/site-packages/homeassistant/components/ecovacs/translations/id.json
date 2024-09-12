@@ -1,0 +1,45 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Akun sudah dikonfigurasi"
+        },
+        "error": {
+            "cannot_connect": "Gagal terhubung",
+            "invalid_auth": "Autentikasi tidak valid",
+            "unknown": "Kesalahan tak terduga"
+        },
+        "step": {
+            "auth": {
+                "data": {
+                    "password": "Kata Sandi",
+                    "username": "Nama Pengguna"
+                }
+            },
+            "user": {
+                "data": {
+                    "continent": "Benua",
+                    "country": "Negara",
+                    "mode": "Mode",
+                    "password": "Kata Sandi",
+                    "username": "Nama Pengguna"
+                },
+                "data_description": {
+                    "continent": "Kode dua huruf benua Anda (na, eu, dll)",
+                    "country": "Kode dua huruf negara Anda (us, uk, dll)"
+                }
+            }
+        }
+    },
+    "entity": {
+        "image": {
+            "map": {
+                "name": "Peta"
+            }
+        }
+    },
+    "issues": {
+        "deprecated_yaml_import_issue_continent_not_match": {
+            "description": "Proses konfigurasi Ecovacs menggunakan YAML sedang dalam proses penghapusan tetapi ada kontinen yang tidak terduga yang ditentukan dalam konfigurasi YAML.\n\nDari negara yang ditentukan, nilai kontinen yang diharapkan adalah kontinen \"{continent}\". Ubah kontinen dan mulai ulang Home Assistant untuk mencoba lagi atau hapus konfigurasi YAML Ecovacs dari file configuration.yaml dan lanjutkan ke [penyiapan integrasi]({url}) secara manual.\n\nJika kontinen \"{continent}\" tidak dapat digunakan, silakan laporkan issue di [GitHub]({github_issue_url})."
+        }
+    }
+}

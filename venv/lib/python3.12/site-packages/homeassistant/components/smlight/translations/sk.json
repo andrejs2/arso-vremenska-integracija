@@ -1,0 +1,84 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Zariadenie u\u017e je nakonfigurovan\u00e9",
+            "cannot_connect": "Nepodarilo sa pripoji\u0165",
+            "reauth_failed": "Neplatn\u00e9 overenie",
+            "reauth_successful": "Op\u00e4tovn\u00e9 overenie bolo \u00faspe\u0161n\u00e9"
+        },
+        "error": {
+            "cannot_connect": "Nepodarilo sa pripoji\u0165",
+            "invalid_auth": "Neplatn\u00e9 overenie",
+            "unknown": "Neo\u010dak\u00e1van\u00e1 chyba"
+        },
+        "step": {
+            "auth": {
+                "data": {
+                    "password": "Heslo",
+                    "username": "Pou\u017e\u00edvate\u013esk\u00e9 meno"
+                },
+                "description": "Zadajte pou\u017e\u00edvate\u013esk\u00e9 meno a heslo"
+            },
+            "confirm_discovery": {
+                "description": "Chcete nastavi\u0165 SMLIGHT na {host}?"
+            },
+            "reauth_confirm": {
+                "data": {
+                    "password": "Heslo",
+                    "username": "Pou\u017e\u00edvate\u013esk\u00e9 meno"
+                },
+                "title": "Vypr\u0161ala platnos\u0165 overenia pre {name}"
+            },
+            "user": {
+                "data": {
+                    "host": "Hostite\u013e"
+                },
+                "data_description": {
+                    "host": "N\u00e1zov hostite\u013ea alebo IP adresa zariadenia SMLIGHT SLZB-06x"
+                },
+                "description": "Nastavenie integr\u00e1cie SMLIGHT Zigbee"
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "ethernet": {
+                "name": "Ethernet"
+            },
+            "wifi": {
+                "name": "WiFi"
+            }
+        },
+        "button": {
+            "core_restart": {
+                "name": "Re\u0161tart jadra"
+            },
+            "zigbee_flash_mode": {
+                "name": "Re\u017eim flash Zigbee"
+            },
+            "zigbee_restart": {
+                "name": "Zigbee re\u0161tart"
+            }
+        },
+        "sensor": {
+            "core_temperature": {
+                "name": "Teplota \u010dipu jadra"
+            },
+            "core_uptime": {
+                "name": "Doba behu jadra"
+            },
+            "fs_usage": {
+                "name": "Vyu\u017eitie s\u00faborov\u00e9ho syst\u00e9mu"
+            },
+            "ram_usage": {
+                "name": "Vyu\u017eitie pam\u00e4te RAM"
+            },
+            "socket_uptime": {
+                "name": "Prev\u00e1dzkov\u00e1 doba Zigbee"
+            },
+            "zigbee_temperature": {
+                "name": "Teplota \u010dipu Zigbee"
+            }
+        }
+    }
+}
