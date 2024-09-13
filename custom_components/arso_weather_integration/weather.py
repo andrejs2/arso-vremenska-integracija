@@ -60,6 +60,12 @@ CLOUD_CONDITION_MAP = {
     "overcast_lightfg_day": "cloudy",
     "overcast_lightra_night": "rainy",
     "overcast_lightra_day": "rainy",
+    "overcast_modrasn_night": "snowy-rainy",
+    "overcast_modrasn_day": "snowy-rainy",
+    "overcast_lightrasn_day": "snowy-rainy",
+    "overcast_lightrasn_night": "snowy-rainy",
+    "overcast_heavyrasn_night": "snowy-rainy",
+    "overcast_heavyrasn_day": "snowy-rainy",
 
     # Partly cloudy and rainy conditions ('clouds_icon_wwsyn_icon')
     "partcloudy_night": "partlycloudy",  # Corrected to lowercase
@@ -76,6 +82,10 @@ CLOUD_CONDITION_MAP = {
     "prevcloudy_heavyts_night": "lightning",  # Corrected to lowercase
     "prevcloudy_lightra_night": "rainy",
     "prevcloudy_lightra_day": "rainy",
+    "prevcloudy_modra_day": "rainy",
+    "prevcloudy_modra_night": "rainy",
+    "prevcloudy_heavyra_day": "rainy",
+    "prevcloudy_heavyra_night": "rainy",
 
     # Clear conditions
     "clear_night": "clear-night",
