@@ -1,4 +1,4 @@
-name: Validate
+name: Validate HACS Integration
 
 on:
   push: 
@@ -11,8 +11,10 @@ jobs:
   validate-hacs:
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "actions/checkout@v3"
+      - name: Checkout code
+        uses: "actions/checkout@v3"
       - name: HACS validation
         uses: "hacs/action@main"
         with:
           category: "integration"
+          path: "custom_components/arso_weather_integration"
