@@ -10,6 +10,8 @@ on:
 jobs:
   validate-hacs:
     runs-on: "ubuntu-latest"
+    permissions:
+      contents: write  # Zagotovimo, da ima pravice za pisanje/bralne pravice do vsebine
     steps:
       - name: Checkout code
         uses: "actions/checkout@v3"
