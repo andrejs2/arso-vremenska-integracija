@@ -266,6 +266,25 @@ The integration implements two of the async methods `async_forecast_daily`, `asy
 
 To use actions on `weather` see this [Weather Integration](https://www.home-assistant.io/integrations/weather/#action-weatherget_forecasts) page.
 
+### Examples
+```
+- trigger:
+    - platform: time_pattern
+      hours: /1 # Sproži se vsako uro
+  action:
+    - service: weather.get_forecasts
+      data:
+        type: hourly
+      target:
+        entity_id: weather.arso_vreme_ljubljana
+      response_variable: hourly
+  sensor:
+    - name: Temperature forecast next hour
+      unique_id: temperature_forecast_next_hour
+      state: "{{ hourly['weather.arso_vreme_ljubljana'].forecast[0].temperature }}"
+      unit_of_measurement: °C
+```
+
 ## Unique ID Support
 
 Each weather entity now gets a unique ID based on its location and configuration entry. This allows you to customize and edit the entity from the Home Assistant UI.
