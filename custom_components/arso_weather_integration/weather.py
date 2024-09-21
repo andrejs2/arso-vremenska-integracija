@@ -8,6 +8,14 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from .const import DOMAIN
 from homeassistant.components.weather import WeatherEntityFeature
+from astral.sun import sun
+from astral import LocationInfo
+import pytz
+import feedparser
+import re
+from .const import DOMAIN, RSS_STATION_CODES  # Uvozite RSS_STATION_CODES iz const.py
+from homeassistant.const import UnitOfLength
+import asyncio
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -66,14 +74,36 @@ CLOUD_CONDITION_MAP = {
     "overcast_lightrasn_night": "snowy-rainy",
     "overcast_heavyrasn_night": "snowy-rainy",
     "overcast_heavyrasn_day": "snowy-rainy",
-
+    "overcast_modsn_day": "snowy",
+    "overcast_modsn_night": "snowy",
+    "overcast_lightsn_day": "snowy",
+    "overcast_lightsn_night": "snowy",
+    "overcast_modra_night": "rainy",
+    "overcast_modra_day": "rainy",
+    
     # Partly cloudy and rainy conditions ('clouds_icon_wwsyn_icon')
-    "partcloudy_night": "partlycloudy",  # Corrected to lowercase
-    "partcloudy_day": "partlycloudy",  # Corrected to lowercase
-    "partcloudy_lightra_day": "pouring",  # Corrected to lowercase
-    "partcloudy_lightra_night": "pouring",  # Corrected to lowercase
-    "partcloudy_heavytsra_day": "lightning-rainy",  # Corrected to lowercase
+    "partcloudy_night": "partlycloudy", 
+    "partcloudy_day": "partlycloudy", 
+    "partcloudy_lightra_day": "pouring", 
+    "partcloudy_lightra_night": "pouring", 
+    "partcloudy_heavytsra_day": "lightning-rainy", 
     "partcloudy_heavytsra_night": "lightning-rainy",
+    "partcloudy_modsn_night": "snowy",
+    "partcloudy_modsn_day": "snowy",
+    "partcloudy_lightsn_night": "snowy",
+    "partcloudy_lightsn_day": "snowy",
+    "partcloudy_heavysn_night": "snowy",
+    "partcloudy_heavysn_day": "snowy",
+    "partcloudy_lightfg_day": "fog",
+    "partcloudy_lightfg_night": "fog",
+    "partcloudy_lightrasn_day": "snowy-rainy",
+    "partcloudy_lightrasn_night": "snowy-rainy",
+    "partcloudy_modrasn_day": "snowy-rainy",
+    "partcloudy_modrasn_night": "snowy-rainy",
+    "partcloudy_heavyrasn_day": "snowy-rainy",
+    "partcloudy_heavyrasn_night": "snowy-rainy",
+    "partcloudy_modra_day": "rainy",
+    "partcloudy_modra_night": "rainy",
 
     # Storm conditions ('clouds_icon_wwsyn_icon')
     "prevcloudy_modts_day": "lightning",  # Corrected to lowercase
@@ -86,10 +116,26 @@ CLOUD_CONDITION_MAP = {
     "prevcloudy_modra_night": "rainy",
     "prevcloudy_heavyra_day": "rainy",
     "prevcloudy_heavyra_night": "rainy",
+    "prevcloudy_modsn_day": "snowy",
+    "prevcloudy_modsn_night": "snowy",
+    "prevcloudy_lightsn_day": "snowy",
+    "prevcloudy_lightsn_night": "snowy",
+    "prevcloudy_heavysn_day": "snowy",
+    "prevcloudy_heavysn_night": "snowy",
+    "prevcloudy_lightfg_night": "cloudy",
+    "prevcloudy_lightfg_day": "cloudy",
+    "prevcloudy_modfg_night": "fog",
+    "prevcloudy_modfg_day": "fog",
+    "prevcloudy_heavyfg_night": "fog",
+    "prevcloudy_heavyfg_day": "fog",
+    "prevcloudy_lightrasn_day": "snowy-rainy",
+    "prevcloudy_lightrasn_night": "snowy-rainy",
 
     # Clear conditions
     "clear_night": "clear-night",
     "clear_day": "sunny",
+    "clear_lightfg_night": "fog",
+    "clear_lightfg_day": "fog",
 
     # Additional conditions ('clouds_icon_wwsyn_icon', 'wwsyn_shortText', etc.)
     "mostly_clear_night": "clear-night",
@@ -120,16 +166,28 @@ class ArsoWeather(WeatherEntity):
 
     def __init__(self, location, entry_id):
         self._location = location
+        self._station_code = RSS_STATION_CODES.get(location)
         self._attr_native_temperature = None
         self._attr_native_pressure = None
         self._attr_humidity = None
         self._attr_native_wind_speed = None
         self._attr_wind_bearing = None
+        self._attr_native_wind_gust_speed = None
         self._attr_native_precipitation = None
         self._attr_condition = None
         self._daily_forecast = None
         self._hourly_forecast = None
         self._entry_id = entry_id  # Store entry_id for unique_id
+        self._attr_native_dew_point = None
+        self._attr_native_visibility = None
+        self._attr_native_visibility_unit = None
+
+    def is_daytime(self):
+        """Check if it is currently daytime based on the sun position."""
+        loc_info = LocationInfo(self._location)
+        s = sun(loc_info.observer, date=datetime.now(self.hass.config.time_zone))
+        now = pytz.UTC.localize(datetime.utcnow())
+        return s['sunrise'] <= now <= s['sunset']
 
     @property
     def unique_id(self):
@@ -170,6 +228,11 @@ class ArsoWeather(WeatherEntity):
         return UnitOfSpeed.KILOMETERS_PER_HOUR
 
     @property
+    def native_wind_gust_speed(self):
+        """Return the current wind gust speed."""
+        return self._attr_native_wind_gust_speed
+
+    @property
     def wind_bearing(self):
         return self._attr_wind_bearing
 
@@ -198,6 +261,19 @@ class ArsoWeather(WeatherEntity):
             "attribution": "Vir: Agencija RS za okolje",
         }
 
+    @property
+    def extra_state_attributes(self):
+        """Return additional attributes."""
+        attrs = {
+            "location": self._location,
+            "attribution": "Vir: Agencija RS za okolje",
+        }
+        if self._attr_native_dew_point is not None:
+            attrs["dew_point"] = self._attr_native_dew_point
+        if self._attr_native_visibility is not None:
+            attrs["visibility"] = self._attr_native_visibility
+        return attrs
+
     async def async_update(self):
         """Fetch new state data for the sensor and update the forecast."""
         async with aiohttp.ClientSession() as session:
@@ -206,7 +282,6 @@ class ArsoWeather(WeatherEntity):
                     data = await response.json()
                     _LOGGER.debug("Data: %s", data)
 
-                    # Use observation for current weather
                     observation = data.get("observation", {}).get("features", [])[0].get("properties", {}).get("days", [])[0]["timeline"][0]
 
                     try:
@@ -215,30 +290,46 @@ class ArsoWeather(WeatherEntity):
                         self._attr_native_pressure = float(observation.get("msl", 0))
                         self._attr_native_wind_speed = float(observation.get("ff_val", 0))
                         self._attr_wind_bearing = WIND_DIRECTION_MAP.get(observation.get("dd_shortText", ""), "")
+                        self._attr_native_wind_gust_speed = float(observation.get("ffmax_val", 0) or 0)
 
-                        # Log weather conditions for debugging
                         clouds_icon = observation.get("clouds_icon_wwsyn_icon", "").lower()
                         wwsyn_short = observation.get("wwsyn_shortText", "").lower()
                         clouds_short = observation.get("clouds_shortText", "").lower()
 
-                        _LOGGER.debug("clouds_icon_wwsyn_icon: %s", clouds_icon)
-                        _LOGGER.debug("wwsyn_shortText: %s", wwsyn_short)
-                        _LOGGER.debug("clouds_shortText: %s", clouds_short)
-
-                        # Use 'clouds_icon_wwsyn_icon' for detailed weather conditions
                         condition = clouds_icon or wwsyn_short or clouds_short
-                        _LOGGER.debug("Selected weather condition before mapping: %s", condition)
 
-                        # Map the condition to the appropriate weather state
-                        self._attr_condition = CLOUD_CONDITION_MAP.get(condition, "unknown")
+                        # Check if it's daytime or nighttime
+                        if condition == "jasno" and not self.is_daytime():
+                            self._attr_condition = "clear-night"
+                        else:
+                            self._attr_condition = CLOUD_CONDITION_MAP.get(condition, "unknown")
+
                         _LOGGER.debug("Mapped weather condition: %s", self._attr_condition)
-
                         self._attr_native_precipitation = 0  # No direct precipitation data in observation
                     except (ValueError, KeyError) as e:
                         _LOGGER.error("Error processing weather observation data: %s", e)
+        if self._station_code:
+            try:
+                rss_url = f"https://meteo.arso.gov.si/uploads/probase/www/observ/surface/text/sl/{self._station_code}_latest.rss"
+                feed_content = await self._fetch_rss_feed(rss_url)
+                if feed_content:
+                    # Asynchronously parse the RSS feed
+                    feed = await asyncio.to_thread(feedparser.parse, feed_content)
+                    entry = feed.entries[0]
+                    details = self._extract_weather_details(entry)
 
-            # Fetch forecast data
-            await self._fetch_forecasts()
+                    if 'native_dew_point' in details:
+                        self._attr_native_dew_point = float(details['native_dew_point'])
+                    if 'native_visibility' in details:
+                        self._attr_native_visibility = float(details['native_visibility'])
+                        self._attr_native_visibility_unit = UnitOfLength.KILOMETERS
+            except Exception as e:
+                _LOGGER.error(f"Error fetching or parsing RSS feed for {self._location}: {e}")
+        else:
+            _LOGGER.warning(f"No RSS feed available for location {self._location}")
+
+        # Fetch forecast data
+        await self._fetch_forecasts()
 
 
 
@@ -284,7 +375,9 @@ class ArsoWeather(WeatherEntity):
                     "precipitation": float(entry.get("tp_acc", 0)),
                     "wind_speed": float(entry.get("ff_val", 0)),
                     "wind_bearing": WIND_DIRECTION_MAP.get(entry.get("dd_shortText", ""), ""),
+                    "wind_gust_speed": float(entry.get("ffmax_val", 0) or 0), 
                     "condition": condition_translated,
+                    "pressure": float(day["timeline"][0].get("msl", 0)),  # Add air pressure
                 })
 
         _LOGGER.debug("Processed Hourly Forecasts: %s", hourly_forecasts)
@@ -323,7 +416,9 @@ class ArsoWeather(WeatherEntity):
                 "precipitation": float(day["timeline"][0].get("tp_acc", 0)),
                 "wind_speed": float(day["timeline"][0].get("ff_val", 0)),
                 "wind_bearing": WIND_DIRECTION_MAP.get(day["timeline"][0].get("dd_shortText", ""), ""),
+                "wind_gust_speed": float(day["timeline"][0].get("ffmax_val", 0) or 0),
                 "condition": condition_translated,
+                "pressure": float(day["timeline"][0].get("msl", 0)),  # Add air pressure
             })
 
         _LOGGER.debug("Processed Daily Forecasts: %s", daily_forecasts)
@@ -341,3 +436,28 @@ class ArsoWeather(WeatherEntity):
         """Map ARSO cloud conditions to Home Assistant weather conditions."""
         return CLOUD_CONDITION_MAP.get(clouds_short_text.lower(), "unknown")
 
+    async def _fetch_rss_feed(self, url):
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url) as response:
+                if response.status == 404:
+                    _LOGGER.error(f"RSS feed not found for URL: {url}")
+                    return None
+                response.raise_for_status()
+                return await response.text()
+
+    def _extract_weather_details(self, entry):
+        details = {}
+
+        patterns = {
+            'native_dew_point': r'Temperatura rosišča:\s*(-?\d+\.?\d*)\s*°C',
+            'native_visibility': r'Vidnost:\s*(\d+\.?\d*)\s*km',
+        }
+
+        combined_text = f"{entry.title} {entry.summary}"
+
+        for key, pattern in patterns.items():
+            match = re.search(pattern, combined_text)
+            if match:
+                details[key] = match.group(1)
+
+        return details
