@@ -5,11 +5,13 @@ This is a custom component for Home Assistant Weather Integration where data is 
 
 ****Features****
 
-***Current Weather Conditions***: Retrieves real-time weather observations from ARSO, including temperature, humidity, wind speed, pressure and weather conditions.
+***Current Weather Conditions***: Retrieves real-time weather observations from ARSO, including temperature, humidity, wind speed, pressure, visibility, dew point and weather condition.
 
 ***3 Hour  and Daily Forecasts:*** Displays weather forecasts (temperature, wind speed, wind gust speed, pressure, precipitation and weather condition for 3 hour interval and up to 6 days ahead.
 
-Cascading Logic for Weather Conditions: The integration uses cascading logic to determine and provide weather conditions, checking weather phenomenon in combination with clouds, weather phenomenon, and clouds to ensure accurate conditions are displayed. ***ARSO je pri opisu vremena (trenutno stanje) zelo radodaren in natančen, saj poleg pokritosti neba (oblačnosti) podaja podatke o vremenu tudi z vremenskimi pojavi in kombinacijami le-teh. Zato so možne vse mogoče kombinacije opisa vremena, ki pa jih HA in njegova [weather integration](https://developers.home-assistant.io/docs/core/entity/weather/) ne omogoča in so zato reducirane na osnovne pojave.***
+Cascading Logic for Weather Conditions: The integration uses cascading logic to determine and provide weather conditions, checking weather phenomenon in combination with clouds, weather phenomenon, and clouds to ensure accurate conditions are displayed. 
+
+***ARSO je pri opisu vremena (trenutno stanje) zelo radodaren in natančen, saj poleg pokritosti neba (oblačnosti) podaja podatke o vremenu tudi z vremenskimi pojavi in kombinacijami le-teh. Zato so možne vse mogoče kombinacije opisa vremena, ki pa jih HA in njegova [weather integration](https://developers.home-assistant.io/docs/core/entity/weather/) ne omogoča in so zato reducirane na osnovne pojave.***
 
 Unique ID Support: Each entity now has a unique ID, allowing you to edit and customize entities in Home Assistant. 
 
