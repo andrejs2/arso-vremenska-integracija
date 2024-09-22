@@ -1,13 +1,18 @@
 # Home Assistant Custom Component - ARSO Weather (BETA)
 ## Vremenska integracija za Home Assistant
 
-This is a custom component for Home Assistant Weather Integration where data is provided by [ARSO Vreme](https://vreme.arso.gov.si/napoved). It fetches real-time weather data, daily forecasts, and hourly forecasts from the ARSO (Slovenian Environment Agency).
+This is a custom component for Home Assistant Weather Integration where data is provided by [ARSO Vreme](https://vreme.arso.gov.si/napoved). It fetches real-time weather data, daily forecasts, and 3-hour forecasts from the Agencija RS za okolje (ARSO - Slovenian Environment Agency).
 
 ****Features****
 
-***Current Weather Conditions***: Retrieves real-time weather observations from ARSO, including temperature, humidity, wind speed, pressure, visibility, dew point and weather condition.
+***Current Weather Conditions***: Retrieves real-time weather observations from ARSO, including temperature, humidity, wind speed, wind gust speed, pressure, visibility, dew point and weather condition.
 
-***3 Hour  and Daily Forecasts:*** Displays weather forecasts (temperature, wind speed, wind gust speed, pressure, precipitation and weather condition for 3 hour interval and up to 6 days ahead.
+***3 Hour  and Daily Forecasts:*** Displays weather forecasts (temperature, wind speed, wind gust speed, pressure, precipitation and weather condition for 3 hour interval and up to 6 days ahead. 
+
+![alt text](https://github.com/andrejs2/arso-vremenska-integracija/blob/main/images/lju1.JPG?raw=true)
+![alt text](https://github.com/andrejs2/arso-vremenska-integracija/blob/main/images/lju2.JPG?raw=true)
+![alt text](https://github.com/andrejs2/arso-vremenska-integracija/blob/main/images/lju3.JPG?raw=true)
+![alt text](https://github.com/andrejs2/arso-vremenska-integracija/blob/main/images/lju4.JPG?raw=true)
 
 Cascading Logic for Weather Conditions: The integration uses cascading logic to determine and provide weather conditions, checking weather phenomenon in combination with clouds, weather phenomenon, and clouds to ensure accurate conditions are displayed. 
 
@@ -228,7 +233,7 @@ This integration requires selecting a location (`Title` column) from table below
 |METEO-1490_ |SI_GORENJSKA_         |SI     |Žiri                              |46.05   |14.1197  |
 
 
-The integration will automatically pull the weather data for the selected location.
+The integration will automatically pull the weather data and forecasts for the selected location. Multiple location can be added.
 
 
 ## Data Source
@@ -244,6 +249,9 @@ The real-time weather observations are retrieved from the observation section of
     Wind Speed (km/h)
     Cloud Conditions (translated to Home Assistant-compatible terms)
     Daily and Hourly Forecasts
+    Dew point ---> only in current weather
+    Wind gust speed (km/h)
+    Visibility (km) ---> only in forecasts
     Precipitation (mm)   ---> only in forecasts
     Wind Gust Speed (km/h) ---> only in forecasts
 
@@ -267,6 +275,9 @@ The integration implements two of the async methods `async_forecast_daily`, `asy
 ## Updating weather forecast(s) - Action `weather.get_forecasts `
 
 To use actions on `weather` see this [Weather Integration](https://www.home-assistant.io/integrations/weather/#action-weatherget_forecasts) page.
+
+![alt text](https://github.com/andrejs2/arso-vremenska-integracija/blob/main/images/kred1.JPG?raw=true)
+![alt text](https://github.com/andrejs2/arso-vremenska-integracija/blob/main/images/kred2.JPG?raw=true)
 
 ### Examples
 ```
@@ -304,16 +315,8 @@ If you encounter issues, you can enable debug logging for the integration by add
 ## Known Issues
 
 Precipitation Data: Real-time precipitation may not always be available. But is visible as attribute to weather entitiy.
-Forecast Availability: Ensure the selected location supports both hourly and daily forecasts.
+Forecast Availability: Ensure the selected location supports both 3 hour and daily forecasts.
 
-Release Notes
-Version 1.1.0
-
-Unique ID support: Added unique IDs for weather entities, allowing editing via the Home Assistant UI.
-Cascading logic: Implemented cascading logic for selecting weather conditions for both current weather and forecasts.
-Bug fixes: Fixed issues where some weather conditions were shown as "unknown" due to improper mapping.
-Action call to update works for hourly and daily forecasts (twice daily forecast is not yet supported).
-Added wind gust speed and 
 
 ## Contributing
 
@@ -329,7 +332,7 @@ This is my first integration for [Home Assistant](https://www.home-assistant.io/
 
 When I first started volunteering to translate sentences for the [Assist](https://www.home-assistant.io/voice_control/), I had little knowledge about the project itself, and even less about submitting PRs on GitHub—a complete beginner. The learning curve was steep, but today, [Slovenian](https://home-assistant.github.io/intents/) is one of the four languages with fully translated sentences for the voice assistant.
 
-If you come across any bugs or mistakes in the voice assistant, please report them on [GitHub issues](https://github.com/home-assistant/intents/issues). Thank you!
+If you come across any bugs or mistakes in the **voice assistant**, please report them on [GitHub issues](https://github.com/home-assistant/intents/issues). Thank you!
 
 
 Vse svoje projekte razvijam v prostem času, saj programiranje ni moj poklic, a mi je to v veselje. Vsaka pozornost, bodisi kavica ali evro, mi omogoča nadaljevanje tega dela in sem zanjo zelo hvaležen.
