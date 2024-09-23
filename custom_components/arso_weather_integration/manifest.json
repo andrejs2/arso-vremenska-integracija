@@ -1,12 +1,12 @@
 {
   "domain": "arso_weather_integration",
   "name": "ARSO Weather",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "documentation": "https://github.com/andrejs2/arso-vremenska-integracija/",
   "issue_tracker": "https://github.com/andrejs2/arso-vremenska-integracija/issues/",
   "dependencies": [],
   "codeowners": ["@andrejs2"],
-  "requirements": ["aiohttp==3.7.4.post0"],
+  "requirements": ["aiohttp==3.10.5"],
   "iot_class": "cloud_polling",
   "config_flow": true
 }
