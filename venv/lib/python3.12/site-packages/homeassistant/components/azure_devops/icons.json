@@ -1,9 +1,0 @@
-{
-  "entity": {
-    "sensor": {
-      "latest_build": {
-        "default": "mdi:pipe"
-      }
-    }
-  }
-}
