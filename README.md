@@ -251,7 +251,7 @@ The real-time weather observations are retrieved from the observation section of
     Daily and Hourly Forecasts
     Dew point ---> only in current weather
     Wind gust speed (km/h)
-    Visibility (km) ---> only in forecasts
+    Visibility (km) ---> only in current weather
     Precipitation (mm)   ---> only in forecasts
     Wind Gust Speed (km/h) ---> only in forecasts
 
