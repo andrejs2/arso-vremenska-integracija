@@ -104,8 +104,13 @@ CLOUD_CONDITION_MAP = {
     "partcloudy_heavyrasn_night": "snowy-rainy",
     "partcloudy_modra_day": "rainy",
     "partcloudy_modra_night": "rainy",
+    "partcloudy_modtsra_day": "rainy",
+    "partcloudy_modtsra_night": "rainy",
+    "partcloudy_lighttsra_day": "rainy",
+    "partcloudy_lighttsra_night": "rainy",
+    "partcloudy_heavytsra_day": "rainy",
+    "partcloudy_heavytsra_night": "rainy",
     
-
     # Storm conditions ('clouds_icon_wwsyn_icon')
     "prevcloudy_modts_day": "lightning",  # Corrected to lowercase
     "prevcloudy_modts_night": "lightning",  # Corrected to lowercase
