@@ -335,15 +335,14 @@ class ArsoWeather(WeatherEntity):
                     if 'native_visibility' in details:
                         self._attr_native_visibility = float(details['native_visibility'])
                         self._attr_native_visibility_unit = UnitOfLength.KILOMETERS
+                else:
+                    _LOGGER.info(f"No RSS feed available for location {self._location}.")
             except Exception as e:
-                _LOGGER.error(f"Error fetching or parsing RSS feed for {self._location}: {e}")
+                _LOGGER.warning(f"Unable to fetch RSS feed for {self._location}, skipping: {e}")
         else:
-            _LOGGER.warning(f"No RSS feed available for location {self._location}")
-
+            _LOGGER.info(f"No RSS feed available for location {self._location}.")
         # Fetch forecast data
         await self._fetch_forecasts()
-
-
 
     async def _fetch_forecasts(self):
         """Fetch both daily and hourly forecast data."""
