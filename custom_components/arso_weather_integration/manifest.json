@@ -6,7 +6,7 @@
   "issue_tracker": "https://github.com/andrejs2/arso-vremenska-integracija/issues/",
   "dependencies": [],
   "codeowners": ["@andrejs2"],
-  "requirements": ["aiohttp==3.10.8"],
+  "requirements": [],
   "iot_class": "cloud_polling",
   "config_flow": true
 }
