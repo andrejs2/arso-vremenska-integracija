@@ -38,12 +38,7 @@ Slovenian Cloud Condition Translation: Slovenian cloud conditions are translated
 ****No registration, account or fiddling with API's needed. The integration takes care of everything. You just select the desired location or multiple ones and you're done!****
 
 
-***HACS***
-
-No HACS installation is acurrently vailable. Sorry.
-
-
-***Manual Installation***
+***Option 1: Manual Installation***
 
 Download or clone this repository.
 
@@ -52,6 +47,38 @@ Copy the `arso-vremenska-intgracija/custom_components` folder to your Home Assis
     <config directory>/custom_components/arso_weather_integration
 
 Restart Home Assistant to recognize the new integration.
+
+
+
+***Option 2: HACS***
+
+~~No HACS installation is acurrently vailable. Sorry.~~ Thanks to [@peterdolenc](https://github.com/peterdolenc) for the contributions for *Option 2*!
+
+
+If you have a Supervised installation, *Option 1* above is not applicable, but you can try manually adding the repository in HACS. Follow these steps:
+
+Go to HACS, click on the three dots in the top right, and select "Custom repositories".
+
+![Weather Preview](https://github.com/andrejs2/arso-vremenska-integracija/blob/3f94d2cd7a2e475d4e4ab074e48fef8e3e34f2d7/images/398923628-fad2ebfd-8194-4116-83bf-3868faa3bfb6.png?raw=true)
+
+
+Use the repository link and select "Integration" as the type.
+
+![Weather Preview](https://github.com/andrejs2/arso-vremenska-integracija/blob/3f94d2cd7a2e475d4e4ab074e48fef8e3e34f2d7/images/398923631-c282a95c-c7aa-4c0c-bfed-6b0c93b27d8b.png?raw=true)
+   
+
+Now, search for ARSO Weather integration and install it (Download).
+
+![Weather Preview](https://github.com/andrejs2/arso-vremenska-integracija/blob/3f94d2cd7a2e475d4e4ab074e48fef8e3e34f2d7/images/398923635-c701053b-aaa2-438d-a0c0-45e82f6cecf7.png?raw=true)
+
+
+The installation will require a Home Assistant restart.
+
+![Weather Preview](https://github.com/andrejs2/arso-vremenska-integracija/blob/3f94d2cd7a2e475d4e4ab074e48fef8e3e34f2d7/images/398923648-62754eba-a94e-437e-a156-1fc6d7cb75a8.png?raw=true)
+
+
+From this point, follow the setup instructions.
+
 
 ## Setup
 
