@@ -1,3 +1,14 @@
+## Important ⚠️
+🚀 **A new and improved version is available!** 🚀  
+
+We kindly invite you to try the latest version of this integration:  
+➡️ **[ARSO Weather (Slovenian Weather Integration)](https://github.com/andrejs2/slovenian_weather_integration)**  
+
+While this version will continue to be supported, the new integration offers improved stability, additional features, and a better overall experience.  
+
+Thank you for your support and feedback! Your feedbacks have helped shape the improved version. 🎉  
+
+---
 # Home Assistant Custom Component - ARSO Weather (BETA)
 ## Vremenska integracija za Home Assistant
 
